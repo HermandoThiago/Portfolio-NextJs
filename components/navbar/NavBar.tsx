@@ -21,8 +21,8 @@ const NavBar = () => {
                         </IconButton>
                         <Box sx={{ flexGrow: 1 }}></Box>
                         <Box>
-                            <Button sx={{ color: 'white' }}>Home</Button>
-                            <Button sx={{ color: 'white' }}>Tecnologias</Button>
+                            <Button sx={{ color: 'white' }}><a href=''>Home</a></Button>
+                            <Button sx={{ color: 'white' }}><a href='#tecnology'>Tecnologias</a></Button>
                             <Button sx={{ color: 'white' }}>Projetos</Button>
                             <Button sx={{ color: 'white' }}>Contato</Button>
                             </Box>
