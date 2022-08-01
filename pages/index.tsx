@@ -4,6 +4,7 @@ import Footer from '../components/footer/Footer';
 import Description from '../components/description/Description';
 import Tecnology from '../components/tecnology/Tecnology';
 import Contact from '../components/contact/Contact';
+import Container from '../components/container/Container';
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       <Tecnology id='tecnology'/>
       <Contact />
       <Footer />
+      <Container />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
+import InputMask from "react-input-mask";
 
 const useStyles = makeStyles({
     input: {
@@ -24,7 +25,8 @@ const Contact = () => {
     }
 
     return(
-        <Box component={'div'} maxWidth='500px' margin='10px auto' textAlign='center'>
+        <Box component={'div'} maxWidth='500px' padding='30px 0' margin='0 auto' textAlign='center'>
+            
             <h1>Contato</h1>
             <form>
                 <TextField 
@@ -34,15 +36,19 @@ const Contact = () => {
                     fullWidth
                     inputProps={{ className: classes.input }}
                     sx={styleTextField}
-                />
-                <TextField 
-                    id='tel' 
-                    label='Telefone' 
-                    variant="standard"
-                    fullWidth
-                    inputProps={{ className: classes.input }}
-                    sx={styleTextField}
-                />
+                    />
+                    <InputMask mask="(99) 99999-9999">
+                        {() => (
+                        <TextField 
+                            id='tel' 
+                            label='Telefone' 
+                            variant="standard"
+                            fullWidth
+                            inputProps={{ className: classes.input }}
+                            sx={styleTextField}
+                        />
+                        )}
+                    </InputMask>
                 <TextField 
                     id='assunto' 
                     label='Assunto' 
