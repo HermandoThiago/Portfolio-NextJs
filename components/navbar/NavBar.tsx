@@ -13,11 +13,7 @@ const NavBar = () => {
 
     return(
         <div>
-            {open && (
-                <DrawerMenu 
-                    open={open} 
-                    close={handleDrawer}/>
-            )}
+            <DrawerMenu open={open} close={handleDrawer}/>
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar sx={{ backgroundColor: '#0A171F' }}>
                     <Toolbar>

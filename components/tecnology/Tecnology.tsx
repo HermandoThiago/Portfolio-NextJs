@@ -15,17 +15,19 @@ const arraySvg = [
 
 const Tecnology = (props: ITecnologyProps) => {
 
-    const boxStyles = { justifyContent: 'center', marginTop: '20px', marginX: 'auto', overflowX: 'hidden' };
+    const boxStyles = { justifyContent: 'center', padding: '100px 0 50px 0', marginX: 'auto', overflowX: 'hidden' };
 
     return(
         <Container>
             <Box
                 textAlign='center'
                 display='flex'
+                height='100vh'
                 alignItems='center'
                 flexDirection='column'
                 position='relative'
                 sx={boxStyles}
+                id={props.id}
             >
                 <Typography
                     fontWeight='bold'

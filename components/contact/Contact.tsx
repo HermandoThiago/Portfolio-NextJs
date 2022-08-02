@@ -17,7 +17,11 @@ interface IStyleTextField {
     [key: string]: string;
 }
 
-const Contact = () => {
+interface IContact {
+    id: string;
+}
+
+const Contact = (props: IContact) => {
 
     const [name, setName] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
@@ -34,8 +38,8 @@ const Contact = () => {
     const styleTextField: IStyleTextField = { marginTop: '10px', padding: '5px 0' };
 
     return(
-        <Container>
-            <Box component={'div'} maxWidth='500px' padding='30px 0' margin='0 auto' textAlign='center'> 
+        <Container id={props.id}>
+            <Box component={'div'} maxWidth='500px' padding='100px 0 50px 0' margin='0 auto' textAlign='center'> 
                 <h1>Contato</h1>
                 <form>
                     <TextField 
