@@ -1,13 +1,25 @@
 import { Box } from "@mui/system";
 import { AppBar, Toolbar, IconButton, Button } from "@mui/material";
-
 import Image from "next/image";
+import MenuIcon from '@mui/icons-material/Menu';
+import DrawerMenu from "../drawerMenu/DrawerMenu";
+import { useState } from 'react';
 
 const NavBar = () => {
+
+    const [open, setOpen] = useState<boolean>(false);
+
+    const handleDrawer = () => setOpen(!open);
+
     return(
         <div>
+            {open && (
+                <DrawerMenu 
+                    open={open} 
+                    close={handleDrawer}/>
+            )}
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar sx={{ backgroundColor: '#0A171F', paddingY: '0' }}>
+                <AppBar sx={{ backgroundColor: '#0A171F' }}>
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -21,11 +33,10 @@ const NavBar = () => {
                         </IconButton>
                         <Box sx={{ flexGrow: 1 }}></Box>
                         <Box>
-                            <Button sx={{ color: 'white' }}><a href=''>Home</a></Button>
-                            <Button sx={{ color: 'white' }}><a href='#tecnology'>Tecnologias</a></Button>
-                            <Button sx={{ color: 'white' }}>Projetos</Button>
-                            <Button sx={{ color: 'white' }}>Contato</Button>
-                            </Box>
+                            <Button onClick={handleDrawer}>
+                                <MenuIcon sx={{ color: '#fff' }} />
+                            </Button>
+                        </Box>
                     </Toolbar>
                 </AppBar>
             </Box>

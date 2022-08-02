@@ -1,6 +1,8 @@
 import { Box, TextField, Button } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
-import InputMask from "react-input-mask";
+//import InputMask from "react-input-mask";
+import { ChangeEvent, useState } from "react";
+import Container from "../container/Container";
 
 const useStyles = makeStyles({
     input: {
@@ -17,68 +19,77 @@ interface IStyleTextField {
 
 const Contact = () => {
 
+    const [name, setName] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
+    const [subject, setSubject] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
+
+    const handleChangeName = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setName(e.target.value);
+    const handleChangePhone = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPhone(e.target.value);
+    const handleChangeSubject = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setSubject(e.target.value);
+    const handleChangeDescription = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setDescription(e.target.value);
+
     const classes: any = useStyles();
 
-    const styleTextField: IStyleTextField = {
-        marginTop: '10px',
-        padding: '5px 0',
-    }
+    const styleTextField: IStyleTextField = { marginTop: '10px', padding: '5px 0' };
 
     return(
-        <Box component={'div'} maxWidth='500px' padding='30px 0' margin='0 auto' textAlign='center'>
-            
-            <h1>Contato</h1>
-            <form>
-                <TextField 
-                    id='name' 
-                    label='Nome completo' 
-                    variant="standard"
-                    fullWidth
-                    inputProps={{ className: classes.input }}
-                    sx={styleTextField}
+        <Container>
+            <Box component={'div'} maxWidth='500px' padding='30px 0' margin='0 auto' textAlign='center'> 
+                <h1>Contato</h1>
+                <form>
+                    <TextField 
+                        id='name' 
+                        label='Nome completo' 
+                        variant="standard"
+                        fullWidth
+                        value={name}
+                        onChange={(e) => handleChangeName(e)}
+                        inputProps={{ className: classes.input }}
+                        sx={styleTextField}
                     />
-                    <InputMask mask="(99) 99999-9999">
-                        {() => (
                         <TextField 
                             id='tel' 
                             label='Telefone' 
                             variant="standard"
                             fullWidth
+                            value={phone}
+                            onChange={(e) => handleChangePhone(e)}
                             inputProps={{ className: classes.input }}
                             sx={styleTextField}
                         />
-                        )}
-                    </InputMask>
-                <TextField 
-                    id='assunto' 
-                    label='Assunto' 
-                    variant="standard"
-                    fullWidth
-                    inputProps={{ className: classes.input }}
-                    sx={styleTextField}
-                />
-                <TextField 
-                    id='descricao' 
-                    label='Descrição' 
-                    variant="standard"
-                    fullWidth
-                    rows={4}
-                    multiline
-                    inputProps={{ className: classes.input }}
-                    sx={styleTextField}
-                />
-                <Button
-                    fullWidth
-                    variant="contained"
-                    sx={{
-                        marginTop: '10px',
-                        fontSize: '1.1rem'
-                    }}
-                >
-                    Enviar
-                </Button>
-            </form>
-        </Box>
+                    <TextField 
+                        id='assunto' 
+                        label='Assunto' 
+                        variant="standard"
+                        fullWidth
+                        value={subject}
+                        onChange={(e) => handleChangeSubject(e)}
+                        inputProps={{ className: classes.input }}
+                        sx={styleTextField}
+                    />
+                    <TextField 
+                        id='descricao' 
+                        label='Descrição' 
+                        variant="standard"
+                        fullWidth
+                        rows={4}
+                        multiline
+                        value={description}
+                        onChange={(e) => handleChangeDescription(e)}
+                        inputProps={{ className: classes.input }}
+                        sx={styleTextField}
+                    />
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{ marginTop: '10px' }}
+                    >
+                        Enviar
+                    </Button>
+                </form>
+            </Box>
+        </Container>
     )    
 }
 
