@@ -27,11 +27,14 @@ const Contact = (props: IContact) => {
     const [phone, setPhone] = useState<string>("");
     const [subject, setSubject] = useState<string>("");
     const [description, setDescription] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
 
     const handleChangeName = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setName(e.target.value);
     const handleChangePhone = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPhone(e.target.value);
     const handleChangeSubject = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setSubject(e.target.value);
     const handleChangeDescription = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setDescription(e.target.value);
+    const handleChangeEmail = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setEmail(e.target.value);
+
 
     const classes: any = useStyles();
 
@@ -59,6 +62,17 @@ const Contact = (props: IContact) => {
                             fullWidth
                             value={phone}
                             onChange={(e) => handleChangePhone(e)}
+                            inputProps={{ className: classes.input }}
+                            sx={styleTextField}
+                        />
+                    <TextField 
+                            id='email' 
+                            label='E-mail' 
+                            variant="standard"
+                            fullWidth
+                            type='email'
+                            value={email}
+                            onChange={(e) => handleChangeEmail(e)}
                             inputProps={{ className: classes.input }}
                             sx={styleTextField}
                         />

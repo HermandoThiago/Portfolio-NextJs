@@ -12,7 +12,7 @@ const Description = (props: IDescriptionProps) => {
             <Box 
                 marginTop='100px'
                 width='100%' 
-                height='100vh'
+                height='600px'
                 display='flex' 
                 alignItems='center'
                 textAlign='center'

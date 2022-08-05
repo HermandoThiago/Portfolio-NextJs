@@ -42,7 +42,7 @@ const Tecnology = (props: ITecnologyProps) => {
                     Tecnologias
                 </Typography>
                 <Box zIndex={10}>
-                <Typography fontSize='2rem' fontWeight='bold'>Tecnologias</Typography>
+                    <Typography fontSize='2rem' fontWeight='bold'>Tecnologias</Typography>
                 </Box>
                 <Box zIndex={10}>
                 <Grid container spacing={1} sx={{ paddingY: '20px' }}>
