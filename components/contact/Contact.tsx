@@ -21,6 +21,19 @@ interface IContact {
     id: string;
 }
 
+interface IEmail {
+    name: string;
+    phone: string;
+    subject: string;
+    description: string;
+    email: string;
+}
+
+interface IReturnSendEmail {
+    message: string;
+    success: string;
+}
+
 const Contact = (props: IContact) => {
 
     const [name, setName] = useState<string>("");
@@ -35,6 +48,28 @@ const Contact = (props: IContact) => {
     const handleChangeDescription = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setDescription(e.target.value);
     const handleChangeEmail = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setEmail(e.target.value);
 
+    const sendEmail = (): void => {
+
+        const data: IEmail = {
+            name: name,
+            phone: phone,
+            subject: subject,
+            description: description,
+            email: email
+        }
+
+        fetch("https://formsubmit.co/ajax/hermandodev@gmail.com", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+    }
 
     const classes: any = useStyles();
 
@@ -102,6 +137,7 @@ const Contact = (props: IContact) => {
                         fullWidth
                         variant="contained"
                         sx={{ marginTop: '10px' }}
+                        onClick={sendEmail}
                     >
                         Enviar
                     </Button>
