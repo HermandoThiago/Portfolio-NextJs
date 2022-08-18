@@ -1,8 +1,9 @@
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, fabClasses } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
-//import InputMask from "react-input-mask";
 import { ChangeEvent, useState } from "react";
 import Container from "../container/Container";
+import ModalSuccess from "../modalSuccess/ModalSuccess";
+import ModalFailed from "../modalFailed/ModalFailed";
 
 const useStyles = makeStyles({
     input: {
@@ -29,11 +30,6 @@ interface IEmail {
     email: string;
 }
 
-interface IReturnSendEmail {
-    message: string;
-    success: string;
-}
-
 const Contact = (props: IContact) => {
 
     const [name, setName] = useState<string>("");
@@ -41,12 +37,17 @@ const Contact = (props: IContact) => {
     const [subject, setSubject] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [email, setEmail] = useState<string>("");
+    const [openSuccess, setOpenSuccess] = useState<boolean>(false);
+    const [openFailed, setOpenFailed] = useState<boolean>(false);
 
     const handleChangeName = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setName(e.target.value);
     const handleChangePhone = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPhone(e.target.value);
     const handleChangeSubject = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setSubject(e.target.value);
     const handleChangeDescription = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setDescription(e.target.value);
     const handleChangeEmail = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setEmail(e.target.value);
+
+    const handleClose = () => setOpenSuccess(false);
+    const handleCloseFailed = () => setOpenFailed(false);
 
     const sendEmail = (): void => {
 
@@ -67,8 +68,8 @@ const Contact = (props: IContact) => {
             body: JSON.stringify(data)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+            .then(data => setOpenSuccess(true))
+            .catch(error => setOpenFailed(true));
     }
 
     const classes: any = useStyles();
@@ -77,6 +78,8 @@ const Contact = (props: IContact) => {
 
     return(
         <Container id={props.id}>
+            <ModalSuccess open={openSuccess} close={handleClose}/>
+            <ModalFailed open={openFailed} close={handleCloseFailed}/>
             <Box component={'div'} maxWidth='500px' padding='100px 0 50px 0' margin='0 auto' textAlign='center'> 
                 <h1>Contato</h1>
                 <form>
