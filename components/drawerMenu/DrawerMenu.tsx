@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react';
 const menus = [
     { name: 'Home', icon: <Home sx={{ color: 'white' }} />, scroll: 'description' },
     { name: 'Tecnologias', icon: <AccountTree sx={{ color: 'white' }} />, scroll: 'tecnology' },
-    { name: 'Projetos', icon: <DescriptionIcon sx={{ color: 'white' }} />, scroll: '' },
+    { name: 'Projetos', icon: <DescriptionIcon sx={{ color: 'white' }} />, scroll: 'Projetos' },
     { name: 'Contato', icon: <SendIcon sx={{ color: 'white' }} />, scroll: 'contact' }
 ]
 

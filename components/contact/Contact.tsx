@@ -1,4 +1,4 @@
-import { Box, TextField, Button, fabClasses } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
 import { ChangeEvent, useState } from "react";
 import Container from "../container/Container";
@@ -68,19 +68,19 @@ const Contact = (props: IContact) => {
             body: JSON.stringify(data)
         })
             .then(response => response.json())
-            .then(data => setOpenSuccess(true))
-            .catch(error => setOpenFailed(true));
+            .then(() => setOpenSuccess(true))
+            .catch(() => setOpenFailed(true));
     }
 
     const classes: any = useStyles();
 
     const styleTextField: IStyleTextField = { marginTop: '10px', padding: '5px 0' };
-
+    const styleBoxForm = { maxWidth: "500px", padding: "100px 20px 50px 20px", margin: "0 auto", textAlign: "center" }
     return(
         <Container id={props.id}>
             <ModalSuccess open={openSuccess} close={handleClose}/>
             <ModalFailed open={openFailed} close={handleCloseFailed}/>
-            <Box component={'div'} maxWidth='500px' padding='100px 0 50px 0' margin='0 auto' textAlign='center'> 
+            <Box component={'div'} sx={styleBoxForm}> 
                 <h1>Contato</h1>
                 <form>
                     <TextField 

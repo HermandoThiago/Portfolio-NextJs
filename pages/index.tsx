@@ -4,6 +4,7 @@ import Footer from '../components/footer/Footer';
 import Description from '../components/description/Description';
 import Tecnology from '../components/tecnology/Tecnology';
 import Contact from '../components/contact/Contact';
+import Projects from '../components/projects/Projects';
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
       <NavBar />
       <Description id='description'/>
       <Tecnology id='tecnology'/>
+      <Projects id='Projetos'/>
       <Contact id='contact'/>
       <Footer />
     </>
